@@ -22,9 +22,9 @@ public class ProjectResource {
 
     private static final Morphia morphia = new Morphia();
     private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282_hw1");
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
-    private static ProjectDAO projectDAO = new ProjectDAO(datastore);
+    private static final ProjectDAO projectDAO = new ProjectDAO(datastore);
 
     public static Project get(Request req, Response res) {
         Project project = projectDAO.get(Integer.valueOf(req.params(":id")));

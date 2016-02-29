@@ -9,7 +9,7 @@ import static spark.Spark.*;
 /**
  * Created by Liping on 2/26/16.
  */
-public class Application {
+class Application {
     public static void main(String[] args) {
         get("/employee/:id", EmployeeResource::get, new JsonTransformer());
         get("/employee", EmployeeResource::getAll, new JsonTransformer());

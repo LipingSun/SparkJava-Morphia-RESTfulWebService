@@ -23,8 +23,8 @@ public class EmployeeResource {
 
     private static final Morphia morphia = new Morphia();
     private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282_hw1");
-    private static Gson gson = new Gson();
-    private static EmployeeDAO employeeDAO = new EmployeeDAO(datastore);
+    private static final Gson gson = new Gson();
+    private static final EmployeeDAO employeeDAO = new EmployeeDAO(datastore);
 
     public static Employee get(Request req, Response res) {
         Employee employee = employeeDAO.get(Integer.parseInt(req.params(":id")));

@@ -21,7 +21,7 @@ import static spark.Spark.halt;
 public class ProjectResource {
 
     private static final Morphia morphia = new Morphia();
-    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282_hw1");
+    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282LipingSun391");
     private static final Gson gson = new Gson();
 
     private static final ProjectDAO projectDAO = new ProjectDAO(datastore);

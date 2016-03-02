@@ -22,7 +22,7 @@ import static spark.Spark.halt;
 public class EmployeeResource {
 
     private static final Morphia morphia = new Morphia();
-    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282_hw1");
+    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282LipingSun391");
     private static final Gson gson = new Gson();
     private static final EmployeeDAO employeeDAO = new EmployeeDAO(datastore);
 

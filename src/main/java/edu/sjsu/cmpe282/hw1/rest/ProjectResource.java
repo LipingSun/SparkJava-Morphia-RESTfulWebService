@@ -49,7 +49,11 @@ public class ProjectResource {
 
     public static List<Project> getAll(Request req, Response res) {
         List<Project> projects = projectDAO.getAll();
-        res.status(HttpServletResponse.SC_OK);
+        if (projects.size() == 0) {
+            res.status(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            res.status(HttpServletResponse.SC_OK);
+        }
         res.type("application/json");
         return projects;
     }

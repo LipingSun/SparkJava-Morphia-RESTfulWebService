@@ -49,7 +49,11 @@ public class EmployeeResource {
 
     public static List<Employee> getAll(Request req, Response res) {
         List<Employee> employees = employeeDAO.getAll();
-        res.status(HttpServletResponse.SC_OK);
+        if (employees.size() == 0) {
+            res.status(HttpServletResponse.SC_NOT_FOUND);
+        } else {
+            res.status(HttpServletResponse.SC_OK);
+        }
         res.type("application/json");
         return employees;
     }

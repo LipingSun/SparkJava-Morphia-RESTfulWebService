@@ -10,17 +10,18 @@ import static spark.Spark.*;
  * Created by Liping on 2/26/16.
  */
 class Application {
+    private static final String url = "/cmpe282LipingSun391/rest";
     public static void main(String[] args) {
-        get("/employee/:id", EmployeeResource::get, new JsonTransformer());
-        get("/employee", EmployeeResource::getAll, new JsonTransformer());
-        post("/employee", EmployeeResource::create);
-        put("/employee/:id", EmployeeResource::update);
-        delete("/employee/:id", EmployeeResource::delete);
+        get(url + "/employee/:id", EmployeeResource::get, new JsonTransformer());
+        get(url + "/employee", EmployeeResource::getAll, new JsonTransformer());
+        post(url + "/employee", EmployeeResource::create);
+        put(url + "/employee/:id", EmployeeResource::update);
+        delete(url + "/employee/:id", EmployeeResource::delete);
 
-        get("/project/:id", ProjectResource::get, new JsonTransformer());
-        get("/project", ProjectResource::getAll, new JsonTransformer());
-        post("/project", ProjectResource::create);
-        put("/project/:id", ProjectResource::update);
-        delete("/project/:id", ProjectResource::delete);
+        get(url + "/project/:id", ProjectResource::get, new JsonTransformer());
+        get(url + "/project", ProjectResource::getAll, new JsonTransformer());
+        post(url + "/project", ProjectResource::create);
+        put(url + "/project/:id", ProjectResource::update);
+        delete(url + "/project/:id", ProjectResource::delete);
     }
 }

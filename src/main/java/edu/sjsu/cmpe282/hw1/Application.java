@@ -7,6 +7,7 @@ import edu.sjsu.cmpe282.hw1.utils.JsonTransformer;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -24,7 +25,11 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
         Properties prop = new Properties();
-        prop.load(Application.class.getResourceAsStream("/mongodb.properties"));
+        if (args.length == 1) {
+            prop.load(new FileInputStream(args[0]));
+        } else {
+            prop.load(Application.class.getResourceAsStream("/mongodb.properties"));
+        }
 
         mongoClient = new MongoClient(prop.getProperty("host"), Integer.parseInt(prop.getProperty("port")));
         datastore = morphia.createDatastore(mongoClient, prop.getProperty("database"));

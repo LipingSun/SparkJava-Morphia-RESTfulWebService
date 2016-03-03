@@ -1,12 +1,10 @@
 package edu.sjsu.cmpe282.hw1.rest;
 
 import com.google.gson.Gson;
-import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
+import edu.sjsu.cmpe282.hw1.Application;
 import edu.sjsu.cmpe282.hw1.dao.ProjectDAO;
 import edu.sjsu.cmpe282.hw1.domain.Project;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
 import spark.Request;
 import spark.Response;
 
@@ -20,11 +18,8 @@ import static spark.Spark.halt;
  */
 public class ProjectResource {
 
-    private static final Morphia morphia = new Morphia();
-    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282LipingSun391");
+    private static final ProjectDAO projectDAO = new ProjectDAO(Application.datastore);
     private static final Gson gson = new Gson();
-
-    private static final ProjectDAO projectDAO = new ProjectDAO(datastore);
 
     public static Project get(Request req, Response res) {
         Project project = projectDAO.get(Integer.valueOf(req.params(":id")));

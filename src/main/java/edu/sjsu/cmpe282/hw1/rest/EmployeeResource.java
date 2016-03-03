@@ -1,12 +1,10 @@
 package edu.sjsu.cmpe282.hw1.rest;
 
 import com.google.gson.Gson;
-import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
+import edu.sjsu.cmpe282.hw1.Application;
 import edu.sjsu.cmpe282.hw1.dao.EmployeeDAO;
 import edu.sjsu.cmpe282.hw1.domain.Employee;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
 import spark.Request;
 import spark.Response;
 
@@ -21,10 +19,8 @@ import static spark.Spark.halt;
  */
 public class EmployeeResource {
 
-    private static final Morphia morphia = new Morphia();
-    private static final Datastore datastore = morphia.createDatastore(new MongoClient(), "cmpe282LipingSun391");
+    private static final EmployeeDAO employeeDAO = new EmployeeDAO(Application.datastore);
     private static final Gson gson = new Gson();
-    private static final EmployeeDAO employeeDAO = new EmployeeDAO(datastore);
 
     public static Employee get(Request req, Response res) {
         Employee employee = employeeDAO.get(Integer.parseInt(req.params(":id")));

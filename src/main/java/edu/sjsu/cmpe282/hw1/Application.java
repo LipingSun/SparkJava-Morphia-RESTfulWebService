@@ -17,12 +17,10 @@ import static spark.Spark.*;
  */
 public class Application {
 
-
+    private static final String url = "/cmpe282LipingSun391/rest";
     private static final Morphia morphia = new Morphia();
     private static MongoClient mongoClient;
     public static Datastore datastore;
-
-    private static final String url = "/cmpe282LipingSun391/rest";
 
     public static void main(String[] args) throws IOException {
         Properties prop = new Properties();
